@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Primary Meta Tags -->
+    <title>Infinite Mondrian Art Blocks</title>
+    <meta name="description" content="Enjoy Mondrian Art Blocks."/>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/39514595?s=32"/>
+    <link rel="stylesheet" href="/src/assets/styles/style.css">
+  </head>
+  <body
+    @mounted="init"
+    @contextmenu.prevent
+    @selectstart.prevent
+    @dragstart.prevent
+  >
+    <ul>
+      <li></li>
+    </ul>
+    <div
+      v-if="isLoading"
+      class="v-cloak"
+      style="
+        position: fixed; left: 0; top: 0;
+        width: 100vw; height: 100vh;
+        background-color: #eee;
+      "
+    ></div>
+    <script src="/src/assets/scripts/script.js" type="module"></script>
+  </body>
+</html>
