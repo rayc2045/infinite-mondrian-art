@@ -1,10 +1,32 @@
+::-webkit-scrollbar
+  width: 0
+
+html
+  font-size: 16px
+  scrollbar-width: none
+  user-select: none // disable text selection and input focus
+
 body
   background-color: lightgray
+  display: grid
+  place-items: center
 
 ul
   margin: 0
   padding: 0
-  display: grid
+  padding-top: 2em
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
 
 li
+  margin: 2.5em
   list-style: none
+  width: 22em
+  height: 22em
+  background-color: white
+  // box-shadow: 
+
+@media screen and (min-width: 1921px)
+  html
+    font-size: 0.835vw
