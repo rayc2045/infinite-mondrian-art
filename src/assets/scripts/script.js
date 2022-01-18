@@ -37,8 +37,14 @@ createApp({
     }
     return classNames;
   },
-  isTwoObjectsTheSame(a, b) {
+  isObjectSame(a, b) {
     return JSON.stringify(a) === JSON.stringify(b);
+  },
+  isAtTheBottom() {
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollHeight = document.documentElement.scrollHeight;
+    return scrollTop + clientHeight >= scrollHeight;
   },
   generateBlocks(n) {
     let times = 0;
@@ -49,17 +55,11 @@ createApp({
         innerBlockClassNames: this.getBackgroundColorClassNames(columnNum * rowNum)
       };
       for (let i = 0; i < this.blocks.length; i++) {
-        if (this.isTwoObjectsTheSame(this.blocks[i], block)) continue;
+        if (this.isObjectSame(this.blocks[i], block)) continue;
       }
       this.blocks.push(block);
       times++;
     }
-  },
-  isAtTheBottom() {
-    const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
-    const scrollHeight = document.documentElement.scrollHeight;
-    return scrollTop + clientHeight >= scrollHeight;
   },
   addBlocksAtTheBottom() {
     if (this.isAtTheBottom()) this.generateBlocks(this.generateNum);
