@@ -1,3 +1,26 @@
+.v-cloak
+  position: fixed
+  left: 0
+  top: 0
+  width: 100vw
+  height: 100vh
+  background-color: #eee
+  display: grid
+  place-items: center
+  opacity: 1
+  transition: opacity $transitionTime
+  &.animate
+    opacity: 0
+    pointer-events: none
+  h1
+    // width: 90%
+    text-align: center
+    font-family: 'Open Sans', sans-serif
+    line-height: 1.5
+    color: #333
+    @media screen and (min-width: 480px)
+      font-size: 3em
+  
 .red
   background-color: crimson
 

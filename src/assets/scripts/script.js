@@ -3,20 +3,19 @@ import { createApp } from './petite-vue.js';
 createApp({
   isLoading: true,
   colors: [
-    'red', 'red',
-    'yellow', 'yellow',
-    'blue', 'blue',
+    'red',
+    'yellow',
+    'blue',
     'gray',
-    'white', 'white', 'white', 'white', 'white', 'white',
-    'white', 'white', 'white', 'white', 'white', 'white',
+    'white', 'white', 'white', 'white', 'white',
+    'white', 'white', 'white', 'white', 'white',
   ],
   blocks: [],
-  id: 1,
   generateNum: 12,
   init() {
     this.generateBlocks(this.generateNum);
     window.onscroll = () => this.addBlocksAtTheBottom();
-    this.isLoading = false;
+    setTimeout(() => (this.isLoading = false), 2000);
   },
   getRandomNum(min, max) {
     min = Math.ceil(min);
@@ -46,7 +45,6 @@ createApp({
     while (times < n) {
       const [columnNum, rowNum] = [this.getRandomNum(2, 4), this.getRandomNum(2, 4)];
       const block = {
-        id: this.id,
         style: this.getGridStyle(columnNum, rowNum),
         innerBlockClassNames: this.getBackgroundColorClassNames(columnNum * rowNum)
       };
@@ -54,7 +52,6 @@ createApp({
         if (this.isTwoObjectsTheSame(this.blocks[i], block)) continue;
       }
       this.blocks.push(block);
-      this.id++;
       times++;
     }
   },

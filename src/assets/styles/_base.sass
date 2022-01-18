@@ -7,27 +7,41 @@ html
   user-select: none // disable text selection and input focus
 
 body
-  background-color: lightgray
+  position: relative
   display: grid
   place-items: center
+  background-color: #eee
 
 ul
   margin: 0
   padding: 0
-  padding-top: 2em
   display: flex
   flex-wrap: wrap
   justify-content: center
+  opacity: 0
+  transition: opacity $transitionTime
+  &.animate
+    opacity: 1
 
 li
-  margin: 2.5em
+  margin: 2em 0
+  width: 80vw
+  height: 80vw
   list-style: none
   display: grid
   gap: 1em
-  width: 22em
-  height: 22em
   background-color: black
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
+  border-radius: 0.8em
+  overflow: hidden
+  box-shadow: rgba(black, 0.15) 0 0.5em 1.5em
+
+@media screen and (min-width: 480px)
+  ul
+    padding-top: 2em
+  li
+    margin: 2.5em
+    width: 22em
+    height: 22em
 
 @media screen and (min-width: 1921px)
   html

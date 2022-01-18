@@ -8,6 +8,11 @@
     <title>Infinite Mondrian Art Blocks</title>
     <meta name="description" content="Enjoy Mondrian Art Blocks."/>
     <link rel="icon" href="https://avatars.githubusercontent.com/u/39514595?s=32"/>
+    <!-- Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <!-- Style -->
     <link rel="stylesheet" href="/src/assets/styles/style.css">
   </head>
   <body
@@ -16,26 +21,25 @@
     @selectstart.prevent
     @dragstart.prevent
   >
-    <ul>
+    <ul :class="{ animate: !isLoading}">
       <li
-        v-for="block in blocks" :key="block.id"
+        v-for="(block, idx) in blocks" :key="idx"
         :style="block.style"
       >
         <div
-          v-for="(innerBlock, index) in block.innerBlockClassNames"
+          v-for="innerBlock in block.innerBlockClassNames"
           :class="`${innerBlock}`"
         ></div>
       </li>
     </ul>
+
     <div
-      v-if="isLoading"
       class="v-cloak"
-      style="
-        position: fixed; left: 0; top: 0;
-        width: 100vw; height: 100vh;
-        background-color: #eee;
-      "
-    ></div>
+      :class="{ animate: !isLoading }"
+    >
+      <h1>Welcome to Infinite Mondrian Art Blocks</h1>
+    </div>
+
     <script src="/src/assets/scripts/script.js" type="module"></script>
   </body>
 </html>
