@@ -17,7 +17,15 @@
     @dragstart.prevent
   >
     <ul>
-      <li></li>
+      <li
+        v-for="block in blocks" :key="block.id"
+        :style="block.style"
+      >
+        <div
+          v-for="(innerBlock, index) in block.innerBlockClassNames"
+          :class="`${innerBlock}`"
+        ></div>
+      </li>
     </ul>
     <div
       v-if="isLoading"
