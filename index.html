@@ -23,12 +23,12 @@
   >
     <ul :class="{ animate: !isLoading}">
       <li
-        v-for="(block, idx) in blocks" :key="idx"
+        v-for="(block, blockIdx) in blocks" :key="blockIdx"
         :style="block.style"
       >
         <div
-          v-for="innerBlock in block.innerBlockClassNames"
-          :class="`${innerBlock}`"
+          v-for="(color, colorIdx) in block.colors" :key="colorIdx"
+          :class="color"
         ></div>
       </li>
     </ul>
