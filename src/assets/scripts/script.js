@@ -33,7 +33,7 @@ createApp({
     let [column, row] = ['', ''];
     for (let i = 0; i < columnNum; i++) column += `${this.getRandomDecimal(2)}fr `;
     for (let i = 0; i < rowNum; i++) row += `${this.getRandomDecimal(2)}fr `;
-    return `grid-template-columns: ${column.trim()}; grid-template-rows: ${row.trim()}`
+    return `grid-template-columns: ${column.trim()}; grid-template-rows: ${row.trim()}`;
   },
   getColors(num) {
     const colors = [];
@@ -51,7 +51,7 @@ createApp({
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
     const scrollHeight = document.documentElement.scrollHeight;
-    return scrollTop + clientHeight >= scrollHeight;
+    return scrollTop + clientHeight >= scrollHeight * 0.9;
   },
   generateBlocks(n) {
     let times = 0;
