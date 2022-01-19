@@ -22,17 +22,17 @@ createApp({
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
   },
-  getRandomDecimal(n) {
+  getRandomPositiveDecimal(n) {
     return (
-      this.getRandomNum(1, 4) +
-      this.getRandomNum(1, 9) / 10 +
-      this.getRandomNum(1, 9) / 100
+      this.getRandomNum(1, 9) +
+      this.getRandomNum(0, 9) / 10 +
+      this.getRandomNum(0, 9) / 100
     ).toFixed(n);
   },
   getGridStyle(columnNum, rowNum) {
     let [column, row] = ['', ''];
-    for (let i = 0; i < columnNum; i++) column += `${this.getRandomDecimal(2)}fr `;
-    for (let i = 0; i < rowNum; i++) row += `${this.getRandomDecimal(2)}fr `;
+    for (let i = 0; i < columnNum; i++) column += `${this.getRandomPositiveDecimal(2)}fr `;
+    for (let i = 0; i < rowNum; i++) row += `${this.getRandomPositiveDecimal(2)}fr `;
     return `grid-template-columns: ${column.trim()}; grid-template-rows: ${row.trim()}`;
   },
   getColors(num) {
@@ -44,14 +44,29 @@ createApp({
     }
     return colors;
   },
-  isObjectSame(a, b) {
+  objectsEqual(a, b) {
     return JSON.stringify(a) === JSON.stringify(b);
+  },
+  arraysEqual(a, b) {
+    return (
+      Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((val, index) => val === b[index])
+    );
   },
   isAtTheBottom() {
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
     const scrollHeight = document.documentElement.scrollHeight;
     return scrollTop + clientHeight >= scrollHeight * 0.9;
+  },
+  colorsRepeated(colors) {
+    let isRepeated = false;
+    for (let i = 0; i < this.blocks.length; i++) {
+      if (this.arraysEqual(this.blocks[i].colors, colors)) isRepeated = true;
+    }
+    return isRepeated;
   },
   generateBlocks(n) {
     let times = 0;
@@ -61,9 +76,7 @@ createApp({
         style: this.getGridStyle(columnNum, rowNum),
         colors: this.getColors(columnNum * rowNum)
       };
-      for (let i = 0; i < this.blocks.length; i++) {
-        if (this.isObjectSame(this.blocks[i], block)) continue;
-      }
+      if (this.colorsRepeated(block.colors)) continue;
       this.blocks.push(block);
       times++;
     }
