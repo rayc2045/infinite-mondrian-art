@@ -14,7 +14,7 @@ createApp({
   generateNum: 12,
   init() {
     this.generateBlocks(this.generateNum);
-    window.onscroll = () => this.addBlocksAtTheBottom();
+    window.onscroll = () => this.addBlocksWhenReachTheEnd();
     setTimeout(() => (this.isLoading = false), 2000);
   },
   getRandomNum(min, max) {
@@ -55,12 +55,6 @@ createApp({
       a.every((val, index) => val === b[index])
     );
   },
-  isAtTheBottom() {
-    const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
-    const scrollHeight = document.documentElement.scrollHeight;
-    return scrollTop + clientHeight >= scrollHeight * 0.9;
-  },
   colorsRepeated(colors) {
     let isRepeated = false;
     for (let i = 0; i < this.blocks.length; i++) {
@@ -68,9 +62,14 @@ createApp({
     }
     return isRepeated;
   },
+  isAtOverallHeightPos(percentage = 1) {
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollHeight = document.documentElement.scrollHeight;
+    return scrollTop + clientHeight >= scrollHeight * percentage;
+  },
   generateBlocks(n) {
-    let times = 0;
-    while (times < n) {
+    for (let i = 0; i < n; i++) {
       const [columnNum, rowNum] = [this.getRandomNum(2, 4), this.getRandomNum(2, 4)];
       const block = {
         style: this.getGridStyle(columnNum, rowNum),
@@ -78,10 +77,9 @@ createApp({
       };
       if (this.colorsRepeated(block.colors)) continue;
       this.blocks.push(block);
-      times++;
     }
   },
-  addBlocksAtTheBottom() {
-    if (this.isAtTheBottom()) this.generateBlocks(this.generateNum);
+  addBlocksWhenReachTheEnd() {
+    if (this.isAtOverallHeightPos(0.8)) this.generateBlocks(this.generateNum);
   }
 }).mount();
