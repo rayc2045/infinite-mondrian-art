@@ -22,10 +22,17 @@ createApp({
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
   },
+  getRandomDecimal(n) {
+    return (
+      this.getRandomNum(1, 4) +
+      this.getRandomNum(1, 9) / 10 +
+      this.getRandomNum(1, 9) / 100
+    ).toFixed(n);
+  },
   getGridStyle(columnNum, rowNum) {
     let [column, row] = ['', ''];
-    for (let i = 0; i < columnNum; i++) column += `${this.getRandomNum(1, 4)}fr `;
-    for (let i = 0; i < rowNum; i++) row += `${this.getRandomNum(1, 4)}fr `;
+    for (let i = 0; i < columnNum; i++) column += `${this.getRandomDecimal(2)}fr `;
+    for (let i = 0; i < rowNum; i++) row += `${this.getRandomDecimal(2)}fr `;
     return `grid-template-columns: ${column.trim()}; grid-template-rows: ${row.trim()}`
   },
   getColors(num) {
