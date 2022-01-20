@@ -21,9 +21,12 @@
     @selectstart.prevent
     @dragstart.prevent
   >
-    <ul :class="{ animate: !isLoading}">
+    <ul
+      class="container"
+      :class="{ animate: !isLoading}">
       <li
         v-for="(block, blockIdx) in blocks" :key="blockIdx"
+        class="block"
         :style="block.style"
       >
         <div
