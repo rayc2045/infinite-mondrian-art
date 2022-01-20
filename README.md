@@ -1,6 +1,6 @@
 # Infinite Mondrian Art
 
-![Cover](https://cdn.dribbble.com/users/3800131/screenshots/17315112/media/51036be70b92f942d554f270b3ebde7d.png)
+![Cover](https://cdn.dribbble.com/users/3800131/screenshots/17315331/media/fba91e10d3851332edd6d1405c95ce1e.png)
 
 [> Infinite Mondrian Art](https://mondrian-art.netlify.app/)
 
