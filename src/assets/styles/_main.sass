@@ -32,8 +32,8 @@
 
 .block
   margin: 2em 0
-  width: 80vw
-  height: 80vw
+  width: 70vw
+  height: 70vw
   display: grid
   gap: 1em
   background-color: black
@@ -41,15 +41,6 @@
   overflow: hidden
   box-shadow: rgba(black, 0.15) 0 0.5em 1.5em
 
-@media screen and (min-width: 480px)
-  .container
-    padding: 2em 0
-
-  .block
-    margin: 2.5em
-    width: 22em
-    height: 22em
-  
 .red
   background-color: crimson
 
@@ -67,3 +58,16 @@
 
 .white
   background-color: white
+
+@media screen and (min-width: 384px)
+  .container
+    padding: 2em
+
+  .block
+    margin: 2.5em
+    width: 16em
+    height: 16em
+
+@media screen and (min-width: 1400px)
+  .container
+    padding: 2em 10vw
