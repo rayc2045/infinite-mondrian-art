@@ -69,7 +69,8 @@ createApp({
     return scrollTop + clientHeight >= scrollHeight * percentage;
   },
   generateBlocks(n) {
-    for (let i = 0; i < n; i++) {
+    let count = 0;
+    while (count < n) {
       const [columnNum, rowNum] = [this.getRandomNum(2, 4), this.getRandomNum(2, 4)];
       const block = {
         style: this.getGridStyle(columnNum, rowNum),
@@ -77,6 +78,7 @@ createApp({
       };
       if (this.colorsRepeated(block.colors)) continue;
       this.blocks.push(block);
+      count++;
     }
   },
   addBlocksWhenReachTheEnd() {
