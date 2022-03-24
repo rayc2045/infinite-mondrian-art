@@ -1,4 +1,4 @@
-# Infinite Mondrian Art
+# Infinite Mondrian Art｜無限生成的蒙德里安色塊
 
 ![Cover](https://cdn.dribbble.com/users/3800131/screenshots/17315331/media/fba91e10d3851332edd6d1405c95ce1e.png)
 
